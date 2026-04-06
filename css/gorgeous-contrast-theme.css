@@ -33,7 +33,7 @@
    
    p {
      font-family: 'Barlow', sans-serif !important;
-     font-size: 1rem !important;
+     font-size: 5rem !important;
      font-weight: 300;
      line-height: 1.8 !important;
      color: var(--muted) !important;
@@ -132,7 +132,7 @@
    
    .navbar-custom .navbar-brand {
      font-family: 'Barlow Condensed', sans-serif !important;
-     font-size: 1.3rem !important;
+     font-size: 2.6rem !important;
      font-weight: 800 !important;
      text-transform: uppercase;
      letter-spacing: 0.08em;
@@ -140,7 +140,7 @@
    }
    .navbar-custom .nav li a {
      font-family: 'Barlow', sans-serif !important;
-     font-size: 0.72rem !important;
+     font-size: 1.44rem !important;
      font-weight: 500 !important;
      letter-spacing: 0.14em !important;
      text-transform: uppercase !important;
