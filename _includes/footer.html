@@ -50,10 +50,16 @@
 </footer>
 
 <!-- jQuery -->
-<script src="{{ "/js/jquery.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl }}"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="{{ "/js/bootstrap.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
+
+<!-- Contact form runtime config -->
+<script>
+window.SITE_CONTACT_ENDPOINT = {{ site.contact_form_endpoint | jsonify }};
+window.SITE_CONTACT_FALLBACK_EMAIL = {{ site.contact_fallback_email | jsonify }};
+</script>
 
 <!-- Custom Theme JavaScript -->
-<script src="{{ "/js/clean-blog.min.js " | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/clean-blog.js" | prepend: site.baseurl }}"></script>

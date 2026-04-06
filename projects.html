@@ -1,0 +1,30 @@
+---
+layout: page
+title: Projects
+header-img: "img/home-bg.png"
+---
+
+{% assign sorted_projects = site.projects | sort: "date" | reverse %}
+{% for project in sorted_projects %}
+<div class="post-preview">
+    <a href="{{ project.url | prepend: site.baseurl }}">
+        <h2 class="post-title">{{ project.title }}</h2>
+        {% if project.subtitle %}
+        <h3 class="post-subtitle">{{ project.subtitle }}</h3>
+        {% endif %}
+    </a>
+    {% if project.summary %}
+    <p>{{ project.summary }}</p>
+    {% else %}
+    {{ project.excerpt }}
+    {% endif %}
+    {% if project.date %}
+    <p class="post-meta">Updated {{ project.date | date: "%B %-d, %Y" }}</p>
+    {% endif %}
+</div>
+<hr>
+{% endfor %}
+
+{% if sorted_projects.size == 0 %}
+<p>No projects published yet. Check back soon.</p>
+{% endif %}

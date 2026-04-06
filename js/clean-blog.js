@@ -13,13 +13,15 @@ $(function() {
 
 $(function() {
 
-    $("#contactFrom input,#contactForm textarea").jqBootstrapValidation({
+    $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
             // additional error messages or events
         },
         submitSuccess: function($form, event) {
             event.preventDefault(); // prevent default submit behaviour
+            var endpoint = window.SITE_CONTACT_ENDPOINT || "";
+            var fallbackEmail = window.SITE_CONTACT_FALLBACK_EMAIL || "";
             // get values from FORM
             var name = $("input#name").val();
             var email = $("input#email").val();
@@ -30,8 +32,24 @@ $(function() {
             if (firstName.indexOf(' ') >= 0) {
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
+            if (!endpoint) {
+                var fallbackMessage = "Contact form backend is not configured yet. ";
+                if (fallbackEmail) {
+                    fallbackMessage += "Please email me directly at <a href='mailto:" + fallbackEmail + "'>" + fallbackEmail + "</a>.";
+                } else {
+                    fallbackMessage += "Please reach out via one of the social links below.";
+                }
+
+                $('#success').html("<div class='alert alert-info'>");
+                $('#success > .alert-info').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                    .append("</button>");
+                $('#success > .alert-info').append("<strong>" + fallbackMessage + "</strong>");
+                $('#success > .alert-info').append('</div>');
+                $('#contactForm').trigger("reset");
+                return;
+            }
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: endpoint,
                 type: "POST",
                 data: {
                     name: name,

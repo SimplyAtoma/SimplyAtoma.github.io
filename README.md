@@ -1,24 +1,53 @@
-#Clean Blog by Start Bootstrap - Jekyll Version
+# SimplyAtoma.github.io
 
-The official Jekyll version of the Clean Blog theme by [Start Bootstrap](http://startbootstrap.com/).
+Personal Jekyll site and blog for Hector Rodriguez Duenas.
 
-###[View Live Demo &rarr;](http://blackrockdigital.github.io/startbootstrap-clean-blog-jekyll/)
+## Local Development
 
-## Before You Begin
+1. Install Ruby and Bundler.
+2. Install gems:
+   - `bundle install`
+3. Run the site locally:
+   - `bundle exec jekyll serve`
+4. Open:
+   - `http://127.0.0.1:4000`
 
-In the _config.yml file, the base URL is set to /startbootstrap-clean-blog-jekyll which is this themes gh-pages preview. It's recommended that you remove the base URL before working with this theme locally!
+## Build
 
-It should look like this:
-`baseurl: ""`
+- Local production build:
+  - `bundle exec jekyll build`
+- Output folder:
+  - `_site/`
 
-## What's Included
+## Configuration
 
-A full Jekyll environment is included with this theme. If you have Jekyll installed, simply run `jekyll serve` in your command line and preview the build in your browser. You can use `jekyll serve --watch` to watch for changes in the source files as well.
+Site-level settings live in `_config.yml`, including:
 
-A Grunt environment is also included. There are a number of tasks it performs like minification of the JavaScript, compiling of the LESS files, adding banners to keep the Apache 2.0 license intact, and watching for changes. Run the grunt default task by entering `grunt` into your command line which will build the files. You can use `grunt watch` if you are working on the JavaScript or the LESS.
+- `url`
+- `baseurl`
+- `author`
+- `description`
+- `header-img`
+- social usernames
 
-You can run `jekyll serve --watch` and `grunt watch` at the same time to watch for changes and then build them all at once.
+## Content Model
 
-## Support
+- Posts:
+  - `_posts/*.markdown`
+- Projects:
+  - `_projects/*.md`
+  - Listed on `/projects/` via `projects.html`
 
-Visit Clean Blog's template overview page on Start Bootstrap at http://startbootstrap.com/template-overviews/clean-blog/ and leave a comment, email feedback@startbootstrap.com, or open an issue here on GitHub for support.
+## Contact Form (Static Hosting)
+
+GitHub Pages does not run PHP, so `mail/contact_me.php` is not used in production.
+
+- Set a hosted form endpoint in `_config.yml`:
+  - `contact_form_endpoint: "https://formspree.io/f/your-id"` (example)
+- Keep fallback email set:
+  - `contact_fallback_email: "you@example.com"`
+- If no endpoint is configured, the form shows an informational fallback message with direct email.
+
+## CI
+
+This repo includes a GitHub Action at `.github/workflows/jekyll-build.yml` that runs `bundle exec jekyll build` on pushes to `master` and pull requests.

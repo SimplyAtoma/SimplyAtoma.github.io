@@ -1,14 +1,17 @@
 # Site settings
 author: Hector Rodriguez Duenas
-title: 
+title: Hector Rodriguez Duenas
 header-img: img/home-bg.png
 email: h.rodri831@gmail.com
 copyright_name: Hector Rodriguez Duenas
 description: > # this means to ignore newlines until "baseurl:"
-  
+  Personal site and blog for projects, lessons learned, and development updates.
+url: "https://simplyatoma.github.io"
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  SimplyAtoma
+contact_form_endpoint: ""
+contact_fallback_email: h.rodri831@gmail.com
 
 # Build settings
 markdown: kramdown
@@ -16,5 +19,9 @@ highlighter: rouge
 permalink: pretty
 paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
 
-gems: [jekyll-paginate, jekyll-feed]
+plugins: [jekyll-paginate, jekyll-feed]
